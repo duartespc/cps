@@ -1,7 +1,6 @@
-var nodemailer = require('nodemailer');
 require("dotenv").config();
 console.log(process.env) // remove this after it's working
-
+var nodemailer = require('nodemailer');
 
 
 var transporter = nodemailer.createTransport({
