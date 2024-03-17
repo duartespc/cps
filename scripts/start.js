@@ -21,6 +21,14 @@ var transporter = nodemailer.createTransport({
     text: 'That was easy!'
   };
 
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });   
+
 concurrently([
     { command: 'node scripts/sb-watch.js', name: 'SB_WATCH', prefixColor: 'bgBlue.bold' },
     { 
@@ -36,13 +44,6 @@ concurrently([
 
 function success() {
     console.log('Success'); 
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });   
 }
 
 function failure() {
