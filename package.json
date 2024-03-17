@@ -37,6 +37,7 @@
     },
     "dependencies": {
         "bootstrap": "5.2.3",
+        "dotenv": "^16.4.5",
         "nodemailer": "^6.9.12"
     },
     "devDependencies": {
