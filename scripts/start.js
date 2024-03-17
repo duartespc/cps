@@ -1,10 +1,31 @@
 const concurrently = require('concurrently');
+
+
+const express = require("express");
+const app = express();
+const port = 5000;
+
+
 var nodemailer = require('nodemailer');
 require("dotenv").config();
 
 const upath = require('upath');
 
 const browserSyncPath = upath.resolve(upath.dirname(__filename), '../node_modules/.bin/browser-sync');
+
+app.post("/sendmail", (req, res) => {
+  const {to, subject, message} = req.body;
+  
+  const mailOptions = {
+    from: process.env.user_email,
+    to: to,
+    subject: subject,
+    text: message
+  }
+
+  transporter_pro
+      .sendMail(mailOptions)
+}) 
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -28,6 +49,8 @@ var transporter = nodemailer.createTransport({
       console.log('Email sent: ' + info.response);
     }
   });   
+
+
 
 concurrently([
     { command: 'node scripts/sb-watch.js', name: 'SB_WATCH', prefixColor: 'bgBlue.bold' },

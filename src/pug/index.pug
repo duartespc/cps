@@ -289,7 +289,7 @@ html(lang='en')
                 // https://startbootstrap.com/solution/contact-forms
                 // to get an API token!
 
-                form#contactForm(data-sb-form-api-token='API_TOKEN')
+                form#contactForm(action="http://localhost:3000/sendmail", method="POST")
                     .row.align-items-stretch.mb-5
                         .col-md-6
                             .form-group
