@@ -1,7 +1,6 @@
 const concurrently = require('concurrently');
 var nodemailer = require('nodemailer');
 require("dotenv").config();
-console.log(process.env) // remove this after it's working
 
 const upath = require('upath');
 
