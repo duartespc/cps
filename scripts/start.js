@@ -58,6 +58,9 @@ app.post("/sendmail", (req, res) => {
   });   
 
 
+  app.listen(port);
+
+
 
 concurrently([
     { command: 'node scripts/sb-watch.js', name: 'SB_WATCH', prefixColor: 'bgBlue.bold' },
