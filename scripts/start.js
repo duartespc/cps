@@ -3,7 +3,11 @@ const concurrently = require('concurrently');
 
 const express = require("express");
 const app = express();
-const port = 5000;
+
+const port = 3000;
+
+const bodyParser = require("express").json;
+app.use(bodyParser)
 
 
 var nodemailer = require('nodemailer');
@@ -12,6 +16,14 @@ require("dotenv").config();
 const upath = require('upath');
 
 const browserSyncPath = upath.resolve(upath.dirname(__filename), '../node_modules/.bin/browser-sync');
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.user_email,
+    pass: process.env.user_password
+  }
+});
 
 app.post("/sendmail", (req, res) => {
   const {to, subject, message} = req.body;
@@ -23,17 +35,13 @@ app.post("/sendmail", (req, res) => {
     text: message
   }
 
-  transporter_pro
+  transporter
       .sendMail(mailOptions)
+
+  console.log(message)
 }) 
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.user_email,
-      pass: process.env.user_password
-    }
-  });
+
   
   var mailOptions = {
     from: 'duarte.cambra@gmail.com',
@@ -49,6 +57,9 @@ var transporter = nodemailer.createTransport({
       console.log('Email sent: ' + info.response);
     }
   });   
+
+
+  app.listen(port);
 
 
 
@@ -72,3 +83,4 @@ function success() {
 function failure() {
     console.log('Failure');
 }
+
