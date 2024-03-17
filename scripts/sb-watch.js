@@ -27,8 +27,10 @@ watcher.on('ready', () => {
 
 _handleSCSS();
 
+
 function _processFile(filePath, watchEvent) {
-    
+
+          
     if (!READY) {
         if (filePath.match(/\.pug$/)) {
             if (!filePath.match(/includes/) && !filePath.match(/mixins/) && !filePath.match(/\/pug\/layouts\//)) {
