@@ -1,10 +1,9 @@
 const concurrently = require('concurrently');
 
+const port = 3002;
 
 const express = require("express");
 const app = express();
-
-const port = 3000;
 
 const bodyParser = require("express").json;
 app.use(bodyParser)
@@ -57,9 +56,6 @@ app.post("/sendmail", (req, res) => {
       console.log('Email sent: ' + info.response);
     }
   });   
-
-
-  app.listen(port);
 
 
 
