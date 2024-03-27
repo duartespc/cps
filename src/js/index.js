@@ -2,9 +2,9 @@ const form = document.getElementById("contact-form");
 
 const formEvent = form.addEventListener("submit", (event) => {
   event.preventDefault();
-  location.reload()
   let mail = new FormData(form);
   sendMail(mail);
+  location.reload()
 });
 
 const sendMail = (mail) => {
