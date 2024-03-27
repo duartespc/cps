@@ -11,8 +11,6 @@ const app = express();
 // cors
 app.use(cors({ origin: "*" }));
 
-app.use("/public", express.static(process.cwd() + "/public")); //make public static
-
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -51,11 +49,6 @@ app.post("/send", (req, res) => {
       }
     });
   });
-});
-
-//Index page (static HTML)
-app.route("/").get(function (req, res) {
-  res.sendFile(process.cwd() + "/public/index.html");
 });
 
 /*************************************************/
