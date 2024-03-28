@@ -41,7 +41,7 @@ concurrently([
         name: 'SB_BROWSER_SYNC', 
         prefixColor: 'bgGreen.bold',
     },
-    { command: 'port=3050 node scripts/server.js', name: 'SERVER_MAIL', prefixColor: 'bgBlue' }
+    { command: 'node scripts/server.js PORT=3050', name: 'SERVER_MAIL', prefixColor: 'bgBlue' }
 ], {
     prefix: 'name',
     killOthers: ['failure', 'success'],
