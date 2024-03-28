@@ -37,11 +37,11 @@ const browserSyncPath = upath.resolve(upath.dirname(__filename), '../node_module
 concurrently([
     { command: 'node scripts/sb-watch.js', name: 'SB_WATCH', prefixColor: 'bgBlue.bold' },
     { 
-        command: `"${browserSyncPath}"dist -w --no-open --port 10000`,
+        command: `"${browserSyncPath}" --reload-delay 2000 --reload-debounce 2000 dist -w --no-open --port 10000`,
         name: 'SB_BROWSER_SYNC', 
         prefixColor: 'bgGreen.bold',
     },
-    { command: 'PORT=3050 node scripts/server.js', name: 'SERVER_MAIL', prefixColor: 'bgBlue' }
+    { command: 'port=3050 node scripts/server.js', name: 'SERVER_MAIL', prefixColor: 'bgBlue' }
 ], {
     prefix: 'name',
     killOthers: ['failure', 'success'],
