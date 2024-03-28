@@ -4,8 +4,8 @@ const nodemailer = require("nodemailer");
 const multiparty = require("multiparty");
 require("dotenv").config();
 
-//const PORT = process.env.PORT || 3050;
-const PORT = 3050;
+const PORT = process.env.PORT || 3050;
+// const PORT = 3050;
 
 // instantiate an express app
 const app = express();
