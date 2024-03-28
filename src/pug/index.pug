@@ -29,22 +29,23 @@ html(lang='en')
         nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
             .container
                 a.navbar-brand(href='#page-top')
-                    img(src='assets/img/navbar-logo.svg', alt='...')
+                    .masthead-subheading Associação de Praia do Conselho de Sintra
+                    //img(src='assets/img/navbar-logo.svg', alt='...')
                 button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
                     | Menu
                     i.fas.fa-bars.ms-1
                 #navbarResponsive.collapse.navbar-collapse
                     ul.navbar-nav.text-uppercase.ms-auto.py-4.py-lg-0
                         li.nav-item
-                            a.nav-link(href='#services') Services
+                            a.nav-link(href='#services') Cursos
                         li.nav-item
-                            a.nav-link(href='#portfolio') Portfolio
+                            a.nav-link(href='#portfolio') Galeria
                         li.nav-item
-                            a.nav-link(href='#about') About
+                            a.nav-link(href='#about') Sobre
                         li.nav-item
-                            a.nav-link(href='#team') Team
+                            a.nav-link(href='#team') Equipa
                         li.nav-item
-                            a.nav-link(href='#contact') Contact
+                            a.nav-link(href='#contact') Contacto
         // Masthead
         header.masthead
             .container
@@ -56,7 +57,7 @@ html(lang='en')
         section#services.page-section
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Services
+                    h2.section-heading.text-uppercase Cursos
                     h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
                 .row.text-center
                     .col-md-4
@@ -85,7 +86,7 @@ html(lang='en')
         section#portfolio.page-section.bg-light
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Portfolio
+                    h2.section-heading.text-uppercase Galeria
                     h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
                 .row
                     .col-lg-4.col-sm-6.mb-4
@@ -159,7 +160,7 @@ html(lang='en')
         section#about.page-section
             .container
                 .text-center
-                    h2.section-heading.text-uppercase About
+                    h2.section-heading.text-uppercase Sobre
                     h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
                 ul.timeline
                     li
@@ -215,7 +216,7 @@ html(lang='en')
         section#team.page-section.bg-light
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Our Amazing Team
+                    h2.section-heading.text-uppercase Equipa
                     h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
                 .row
                     .col-lg-4
@@ -277,11 +278,11 @@ html(lang='en')
         section#contact.page-section
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Contact Us
+                    h2.section-heading.text-uppercase Contacto
                     h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
 
 
-                form#contact-form(method="POST", action="http://localhost:10000/send", enctype="multipart/form-data")
+                form#contact-form(method="POST", action="http://localhost:3050/send", enctype="multipart/form-data")
                     .row.align-items-stretch.mb-5
                         .col-md-6
                             .form-group
@@ -290,16 +291,17 @@ html(lang='en')
                                 input#name.form-control(
                                     type='text',
                                     name="name",
-                                    placeholder='Your Name *',
+                                    placeholder='O seu nome *',
                                     aria-describedby="emailHelp",
                                     required
                                 )
+                            .form-group
 
                                 // Email address input
                                 input#email.form-control(
                                     type='email',
                                     name='email',
-                                    placeholder='Your Email *',
+                                    placeholder='O seu e-mail *',
                                     aria-describedby="emailHelp",
                                     required
                                 )
@@ -310,7 +312,7 @@ html(lang='en')
                                 input#phone.form-control(
                                     type='tel',
                                     name="phone"
-                                    placeholder='Your Phone *',
+                                    placeholder='O seu nº de telemóvel *',
                                     required                                
                                 )
                                 
@@ -319,7 +321,7 @@ html(lang='en')
 
                                 // Message input
                                 textarea#message.form-control(
-                                    placeholder='Your Message *',
+                                    placeholder='A sua mensagem *',
                                     name="message",
                                     required
                                 )
@@ -345,7 +347,7 @@ html(lang='en')
             .container
                 .row.align-items-center
                     .col-lg-4.text-lg-start
-                        | Copyright &copy; Your Website 2023
+                        | Copyright &copy; CPS 2024
                     .col-lg-4.my-3.my-lg-0
                         a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Twitter')
                             i.fab.fa-twitter

@@ -4,12 +4,14 @@ const nodemailer = require("nodemailer");
 const multiparty = require("multiparty");
 require("dotenv").config();
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3050;
 
 // instantiate an express app
 const app = express();
 // cors
 app.use(cors({ origin: "*" }));
+
+app.use("/dist", express.static(process.cwd() + "/dist")); //make public static
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -45,10 +47,19 @@ app.post("/send", (req, res) => {
     transporter.sendMail(mail, (err, data) => {
       if (err) {
         console.log(err);
-        res.status(500).send("Something went wrong.");
+        res.send("/")
+        //res.status(500).send("Something went wrong.");
+      } else {
+        res.send("/")
+        //res.status(200).send("Email successfully sent to recipient!");
       }
     });
   });
+});
+
+//Index page (static HTML)
+app.route("/").get(function (req, res) {
+  res.sendFile(process.cwd() + "/dist/index.html");
 });
 
 /*************************************************/
