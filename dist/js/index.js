@@ -9,7 +9,7 @@ const formEvent = form.addEventListener("submit", (event) => {
 });
 
 const sendMail = (mail) => {
-  fetch("http://localhost:3050/send", {
+  fetch("http://13.60.180.55:3050/send", {
     method: "post",
     body: mail,
   }).then((response) => {
