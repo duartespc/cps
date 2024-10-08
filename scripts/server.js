@@ -48,11 +48,9 @@ app.post("/send", (req, res) => {
     transporter.sendMail(mail, (err, data) => {
       if (err) {
         console.log(err);
-        res.send("/")
-        //res.status(500).send("Something went wrong.");
+        res.status(500).send("Something went wrong.");
       } else {
-        res.send("/")
-        //res.status(200).send("Email successfully sent to recipient!");
+        res.status(200).send("Email successfully sent to recipient!");
       }
     });
   });
