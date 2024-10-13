@@ -56,6 +56,7 @@ app.post("/send", (req, res) => {
       text: `${data.name} <${data.email}> \n${data.message}`,
     };
     const mailToClient = {
+      sender: `WeOutsideTours <${process.env.EMAIL}>`,
       to: data.email, // receiver email,
       subject: "WeOutside Tours received your contact",
       text: `Hello ${data.name},
@@ -64,6 +65,7 @@ app.post("/send", (req, res) => {
       The best regards from WeOutside Tours`,
     };
     transporter.sendMail(mailToClient, (err, data) => {
+      res.status(200).send("Email successfully sent to customer!");
     });
     transporter.sendMail(mailToMyself, (err, data) => {
       if (err) {
