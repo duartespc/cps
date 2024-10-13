@@ -49,13 +49,23 @@ app.post("/send", (req, res) => {
       data[property] = fields[property].toString();
     });
     console.log(data);
-    const mail = {
+    const mailToMyself = {
       sender: `${data.name} <${data.email}>`,
       to: process.env.EMAIL, // receiver email,
       subject: data.subject,
       text: `${data.name} <${data.email}> \n${data.message}`,
     };
-    transporter.sendMail(mail, (err, data) => {
+    const mailToClient = {
+      to: data.email, // receiver email,
+      subject: "WeOutside Tours received your contact",
+      text: `Hello ${data.name},
+      Thank you for your contact !
+      Our team will get back to you in up 48h
+      The best regards from WeOutside Tours`,
+    };
+    transporter.sendMail(mailToClient, (err, data) => {
+    });
+    transporter.sendMail(mailToMyself, (err, data) => {
       if (err) {
         console.log(err);
         res.status(500).send("Something went wrong.");
