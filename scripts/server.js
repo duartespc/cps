@@ -15,12 +15,22 @@ app.use(cors({ origin: "*" }));
 app.use("/dist", express.static(process.cwd() + "/dist")); //make public static
 
 const transporter = nodemailer.createTransport({
+  host: 'webdomain04.dnscpanel.com', // Your domain's SMTP server
+  port: 465, // Port (use 587 if you don't need SSL)
+  secure: true, // Use SSL (true) or TLS (false)
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASS,  // Password for your email
+  }
+});
+
+/* const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL,
     pass: process.env.PASS
   }
-});
+}); */
 
 // verify connection configuration
 transporter.verify(function (error, success) {
