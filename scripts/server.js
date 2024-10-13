@@ -56,13 +56,10 @@ app.post("/send", (req, res) => {
       text: `${data.name} <${data.email}> \n${data.message}`,
     };
     const mailToClient = {
-      sender: `WeOutsideTours <${process.env.EMAIL}>`,
+      from: `WeOutsideTours <${process.env.EMAIL}>`,
       to: data.email, // receiver email,
       subject: "WeOutside Tours received your contact",
-      text: `Hello ${data.name},
-      Thank you for your contact !
-      Our team will get back to you in up 48h
-      The best regards from WeOutside Tours`,
+      text: `Hello ${data.name},\n Thank you for your contact!\nOur team will get back to you in up 48h\nThe best regards from WeOutside Tours`,
     };
     transporter.sendMail(mailToClient, (err, data) => {
       res.status(200).send("Email successfully sent to customer!");
