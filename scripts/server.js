@@ -1,18 +1,34 @@
+const https = require("https");
+
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const multiparty = require("multiparty");
 require("dotenv").config();
 
-const PORT = process.env.PORT || 3050;
+const PORT = process.env.PORT || 3000;
 // const PORT = 3050;
 
 // instantiate an express app
 const app = express();
 // cors
 app.use(cors({ origin: "*" }));
+const fs = require("fs");
+const bodyParser = require("body-parser");
+
+// Configuring express to use body-parser
+// as middle-ware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use("/dist", express.static(process.cwd() + "/dist")); //make public static
+
+// Creating object of key and certificate
+// for SSL
+const options = {
+  key: fs.readFileSync("server.key"),
+  cert: fs.readFileSync("server.cert"),
+};
 
 const transporter = nodemailer.createTransport({
   host: 'webdomain04.dnscpanel.com', // Your domain's SMTP server
@@ -59,7 +75,7 @@ app.post("/send", (req, res) => {
       from: `WeOutsideTours <${process.env.EMAIL}>`,
       to: data.email, // receiver email,
       subject: "WeOutside Tours received your contact",
-      text: `Hello ${data.name},\n Thank you for your contact!\nOur team will get back to you in up 48h\nThe best regards from WeOutside Tours`,
+      text: `Hello ${data.name},\n\nThank you for your contact!\nOur team will get back to you within 48h\nIf you prefer a direct contact call us or leave us a message on our Phone or WhatsApp (+3511898212).\n\nThe best regards from WeOutside Tours`,
     };
     transporter.sendMail(mailToClient, (err, data) => {
       res.status(200).send("Email successfully sent to customer!");
@@ -80,8 +96,7 @@ app.post("/send", (req, res) => {
   res.sendFile(process.cwd() + "/dist/index.html");
 }); */
 
-/*************************************************/
-// Express server listening...
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}...`);
-});
+https.createServer(options, app)
+    .listen(3000, function (req, res) {
+        console.log("Server started at port 3000");
+    });
